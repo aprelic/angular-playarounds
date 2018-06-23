@@ -1,0 +1,55 @@
+<h2>My Table</h2>
+
+<div class="mat-elevation-z8">
+      
+  <!--mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+  </mat-form-field-->
+
+  <table mat-table [dataSource]="dataSource" matSort>
+     
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="position">
+    <th mat-header-cell *matHeaderCellDef> Position </th>
+    <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+    <td mat-footer-cell *matFooterCellDef> Total </td>
+  </ng-container>
+
+  <!-- ID Column -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> ID </th>
+    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    <td mat-footer-cell *matFooterCellDef>  </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    <td mat-footer-cell *matFooterCellDef>  </td>
+  </ng-container>
+
+  <!-- Stage Column -->
+  <ng-container matColumnDef="stage">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Stage </th>
+    <td mat-cell *matCellDef="let element"> {{element.stage}} </td>
+    <td mat-footer-cell *matFooterCellDef>  </td>
+  </ng-container>
+
+  <!-- ECL Column -->
+  <ng-container matColumnDef="ecl">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> ECL </th>
+    <td mat-cell *matCellDef="let element"> {{element.ecl}} </td>
+    <td mat-footer-cell *matFooterCellDef> {{getTotalEcl()}} </td>
+  </ng-container>
+ 
+  <tr mat-header-row *matHeaderRowDef="displayedColumns sticky: true"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  <tr mat-footer-row *matFooterRowDef="displayedColumns sticky: true"></tr>
+</table>
+
+<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>
